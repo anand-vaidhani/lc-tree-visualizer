@@ -26,7 +26,8 @@ function drawTree(root, canvasEl, pos, level) {
     const coords = {x, y};
     drawNode(canvasEl, root.value, coords);
     if (root.left) {
-        const leftNodeBoundary = {xStart: x-DEAULT_CONFIG.nodeWidthSpacing, xEnd: x };
+        const requiredWidthForLeftSubTree = getTreeWidth(root.left);
+        const leftNodeBoundary = {xStart: x-requiredWidthForLeftSubTree, xEnd: x };
         drawTree(root.left, canvasEl, leftNodeBoundary, level+1);
         const lineStart = {
             x: x,
@@ -39,7 +40,8 @@ function drawTree(root, canvasEl, pos, level) {
         drawLine(canvasEl, lineStart, lineEnd, true);
     }
     if (root.right) {
-        const rightBoundary = {xStart: x, xEnd: x+DEAULT_CONFIG.nodeWidthSpacing};
+        const requiredWidthForRightSubTree = getTreeWidth(root.right);
+        const rightBoundary = {xStart: x, xEnd: x+requiredWidthForRightSubTree};
         drawTree(root.right, canvasEl, rightBoundary, level+1);
         const lineStart = {
             x: x,
