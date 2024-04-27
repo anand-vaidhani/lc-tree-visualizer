@@ -31,19 +31,8 @@ export function drawLine(canvasEl, startCoords, endCoords, isLeft) {
     const ctx = canvasEl.getContext("2d");
     ctx.beginPath();
     ctx.moveTo(startCoords.x, startCoords.y);
-    let controlPoint1 = {x: startCoords.x, y: startCoords.y};
-    let controlPoint2 = {x: endCoords.x, y: endCoords.y};
-    if (isLeft) {
-        controlPoint1.x += 5;
-        controlPoint1.y += 5;
-        controlPoint2.x -= 10;
-        controlPoint2.y -= 10;
-    } else {
-        controlPoint1.x -= 10;
-        controlPoint1.y += 10;
-        controlPoint2.x += 10;
-        controlPoint2.y -= 10;
-    }
+    let controlPoint1 = {x: startCoords.x, y: (endCoords.y + startCoords.y)/2};
+    let controlPoint2 = {x: endCoords.x, y: (endCoords.y + startCoords.y)/2};
     ctx.bezierCurveTo(controlPoint1.x, controlPoint1.y, controlPoint2.x, controlPoint2.y, endCoords.x, endCoords.y);
     ctx.stroke();
 }
