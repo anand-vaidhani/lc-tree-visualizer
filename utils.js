@@ -18,7 +18,7 @@ export function drawNode(canvasEl, value, pos) {
     const ctx = canvasEl.getContext("2d");
     ctx.beginPath();
     ctx.arc(x, y, DEAULT_CONFIG.radius, 0, 2*Math.PI);
-    ctx.fillStyle = "blue"
+    ctx.fillStyle = "skyblue"
     ctx.fill();
     ctx.strokeStyle = "black";
     ctx.stroke();
